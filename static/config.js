@@ -28,7 +28,7 @@ $(document).ready(function () {
 		var doorNumbers = document.getElementById("ex1").value.toString();
 		var intColor = $('input[name="intColor"]:checked');
 		var wheelSize = $('input[name="wheelSize"]:checked');
-		var doorViolation = (bodyType == "Convertible" && ($.inArray(doorNumbers, ["2", "4"]) < 0)) || (bodyType == "Coupe" && doorNumbers != "2") || (bodyType == "Sedan" && doorNumbers != "4") || (bodyType == "SUV" && ($.inArray(doorNumbers, ["2", "4", "6"]) < 0)) || (bodyType == "Van" && ($.inArray(doorNumbers, ["2", "4", "6"]) < 0)) || (bodyType == "Truck" && ($.inArray(doorNumbers, ["2", "4", "6"]) < 0)) || (bodyType == "Wagon" && ($.inArray(doorNumbers, ["4", "6"]) < 0)) || (bodyType == "Hatchback" && ($.inArray(doorNumbers, ["2", "4"]) < 0)) 
+		var doorViolation = (bodyType == "Convertible" && ($.inArray(doorNumbers, ["2", "4"]) < 0)) || (bodyType == "Coupe" && doorNumbers != "2") || (bodyType == "Sedan" && doorNumbers != "4") || (bodyType == "SUV" && ($.inArray(doorNumbers, ["2", "4", "6"]) < 0)) || (bodyType == "Van" && ($.inArray(doorNumbers, ["2", "4", "6"]) < 0)) || (bodyType == "Truck" && ($.inArray(doorNumbers, ["2", "4", "6"]) < 0)) || (bodyType == "Hybrid" && ($.inArray(doorNumbers, ["2", "4"]) < 0))  || (bodyType == "Wagon" && ($.inArray(doorNumbers, ["4", "6"]) < 0)) || (bodyType == "Hatchback" && ($.inArray(doorNumbers, ["2", "4"]) < 0)) 
 
 			if(doorViolation)
 			{
