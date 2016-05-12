@@ -1,0 +1,6 @@
+Flask == 0.10.1
+boto == 2.39.0
+dj_database_url == 0.4.0
+gunicorn==19.4.5
+Django == 1.9.4
+whitenoise == 2.0.6

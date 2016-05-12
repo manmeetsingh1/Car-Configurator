@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Car Configurator</title>
+	<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/gif" sizes="16x16">
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<!-- Additional CSS (Local) -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+	<!-- Lato Font From Google -->
+	<link href='https://fonts.googleapis.com/css?family=Lato:100,300italic,400,900italic' rel='stylesheet' type='text/css'>
+	<!-- Bootstrap's Jumbotron's Template (Local) -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jumbotron-narrow.css') }}">
+	<!-- Bootstrap Slider Libraries by seiyria-->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/7.0.2/bootstrap-slider.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/7.0.2/css/bootstrap-slider.min.css">
+	<!-- Social Media Glyphicons -->
+	<!-- Local Javscript Files -->
+	<script src="https://use.fontawesome.com/d1da558102.js"></script>
+	<script src="{{ url_for('static', filename='rgbToHex.js') }}"></script>
+	<script src="{{ url_for('static', filename='refreshState.js') }}"></script>
+	<script src="{{ url_for('static', filename='config.js') }}"></script>
+</head>
+
+<body>
+	<h1 class="title">Car Configurator</h1>
+	<center>
+		<div class="contact">
+			<a href="https://ca.linkedin.com/in/monty-singh-a11346117" id="linkedinTag"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+			<a href="https://github.com/montysingh" id="githubTag"><i class="fa fa-git-square fa-2x" aria-hidden="true"></i></a>
+			<a href="mailto:montysingh1997@gmail.com" target="_top" id="emailTag"><i class="fa fa-envelope-square fa-2x" aria-hidden="true"></i></a>
+		</div>
+	</center>
+
+	<div class="container">
+		<div class="well well-lg">
+			<h4>1. Body Type</h4>
+			<select class="form-control" id="bod" onchange="run()">
+						<option value="null">SELECT</option>
+				        <option value="Convertible">CONVERTIBLE</option>
+				        <option value="Coupe">COUPE</option>
+				        <option value="Sedan">SEDAN</option>
+				        <option value="SUV">SUV</option>
+				        <option value="Van">VAN</option>
+				        <option value="Truck">TRUCK</option>
+				        <option value="Hybrid">HYBRID</option>
+				        <option value="Wagon">WAGON</option>
+				        <option value="Hatchback">HATCHBACK</option>
+			</select>
+		</div>
+
+		<div class="well well-lg">
+			<h4>2. Number of Doors</h4>
+			<form>
+				<br>
+				<input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="8" data-slider-step="1" data-slider-value="5"/>
+			</form>
+		</div>
+
+		<div class="well well-lg">
+			<h4>3. Exterior Color</h4>
+
+			<form>
+				<p>
+				<b>R </b> <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="255" data-slider-step="1" data-slider-value="128" data-slider-id="RC" id="R" data-slider-tooltip="hide" data-slider-handle="round" />
+				</p>
+				<p>
+				<b>G </b> <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="255" data-slider-step="1" data-slider-value="128" data-slider-id="GC" id="G" data-slider-tooltip="hide" data-slider-handle="round" />
+				</p>
+				<p>
+				<b>B </b> <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="255" data-slider-step="1" data-slider-value="128" data-slider-id="BC" id="B" data-slider-tooltip="hide" data-slider-handle="round" />
+				</p>
+				<div id="RGB"></div>
+			</form>
+		</div>
+
+		<div class="well well-lg">
+			<h4>4. Interior Color</h4>
+			<form>
+				<label class="radio-inline"><input type="radio" name="intColor" value="Tan">Tan</label>
+				<label class="radio-inline"><input type="radio" name="intColor" value="Chocolate">Chocolate</label>
+				<label class="radio-inline"><input type="radio" name="intColor" value="Cream">Cream</label>
+				<label class="radio-inline"><input type="radio" name="intColor" value="Black">Black</label>
+				<label class="radio-inline"><input type="radio" name="intColor" value="Grey">Grey</label>
+				<label class="radio-inline"><input type="radio" name="intColor" value="Red">Red</label>
+			</form>
+		</div>
+
+		<div class="well well-lg">
+			<h4>5. Wheel Size</h4>
+			<form>
+				<label class="radio-inline"><input type="radio" name="wheelSize" value="18">18"</label>
+				<label class="radio-inline"><input type="radio" name="wheelSize" value="20">20"</label>
+				<label class="radio-inline"><input type="radio" name="wheelSize" value="22">22"</label>
+				<label class="radio-inline"><input type="radio" name="wheelSize" value="24">24"</label>
+				<label class="radio-inline"><input type="radio" name="wheelSize" value="26">26"</label>
+			</form>
+		</div>
+		<div class="button-area">
+			<a onClick="refreshPage()" type="button" class="btn btn-default btn-lg raised">Refresh <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
+			<!-- Trigger the modal -->
+			<button name="send" id="btnSubmit" type="button" class="btn btn-danger btn-lg raised" data-toggle="modal" data-target="#myModal" disabled="disabled">Submit <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
+
+			<!-- Modal -->
+			<div class="modal fade" id="myModal" role="dialog" data-keyboard="false" data-backdrop="static">
+			  <div class="modal-dialog">
+			  
+			    <!-- Modal content-->
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h4 class="modal-title">Your Manufacturing Order</h4>
+			      </div>
+			      <div id="divResult" class="modal-body">
+				      	<div class="panel panel-default">
+				      	  <div id="panelTitle" class="panel-heading">Order Number</div>
+				      	            <table class="table table-striped">
+				      	              <tbody>
+				      	                <tr>
+				      	                  <td>Body Type:</td>
+				      	                  <td id="bodyTypeVal"></td>
+				      	                </tr>
+				      	                <tr>
+				      	                  <td>Number of Doors:</td>
+				      	                  <td id="doorNumbersVal"></td> 
+				      	                </tr>
+				      	                <tr>
+				      	                  <td>Exterior Color:</td>
+				      	                  <td id="extColorVal"><div id="RGB"></div></td>
+				      	                </tr>
+				      	                <tr>
+				      	                  <td>Interior Color:</td>
+				      	                  <td id="intColorVal"></td>
+				      	                </tr>
+				      	                <tr>
+				      	                  <td>Wheel Size:</td>
+				      	                  <td id="wheelSizeVal"></td>
+				      	                </tr>
+				      	              </tbody>
+				      	            </table>
+				      	</div>
+			 	 </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-success" data-dismiss="modal" href="">Reconfigure</button>
+			      </div>
+			    </div>
+			    
+			  </div>
+			</div>
+			<!-- END MODAL-->
+		</div>
+	</div>
+</body>
+</html>
